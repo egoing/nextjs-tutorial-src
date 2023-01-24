@@ -14,12 +14,6 @@ export default function Docs() {
   }
   return (
     <>
-      <h1><Link href="/">Counter</Link></h1>
-      <ul>
-        <li><Link href="/about">about</Link></li>
-        <li><Link href="/docs/1">Getting Started</Link></li>
-        <li><Link href="/docs/2">Basic Features</Link></li>
-      </ul>
       <h2>Documentation</h2>
       {article}
     </>

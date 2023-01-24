@@ -19,12 +19,6 @@ export default function Home(props) {
   const [count, setCount] = useState(props.count);
   return (
     <>
-      <h1><Link href="/">Counter</Link></h1>
-      <ul>
-        <li><Link href="/about">about</Link></li>
-        <li><Link href="/docs/1">Getting Started</Link></li>
-        <li><Link href="/docs/2">Basic Features</Link></li>
-      </ul>
       {count} <CounterDummy value={count} onChangeValue={async (newCount)=>{
         const response = await fetch('/api/count', {
           method: 'PATCH',
