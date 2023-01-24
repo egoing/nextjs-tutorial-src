@@ -1,5 +1,6 @@
 import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Counter } from '../components/Counter'
 import { CounterDummy } from '../components/CounterDummy'
 export async function getServerSideProps() {
@@ -18,7 +19,12 @@ export default function Home(props) {
   const [count, setCount] = useState(props.count);
   return (
     <>
-      <h1>Counter</h1>
+      <h1><Link href="/">Counter</Link></h1>
+      <ul>
+        <li><Link href="/about">about</Link></li>
+        <li><Link href="/docs/1">Getting Started</Link></li>
+        <li><Link href="/docs/2">Basic Features</Link></li>
+      </ul>
       {count} <CounterDummy value={count} onChangeValue={async (newCount)=>{
         const response = await fetch('/api/count', {
           method: 'PATCH',
