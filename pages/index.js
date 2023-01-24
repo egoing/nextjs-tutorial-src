@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <h1>Counter</h1>
       <Counter></Counter>
-      <Counter></Counter>
+      <Counter down={true}></Counter>
     </>
   )
 }
