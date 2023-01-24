@@ -1,9 +1,5 @@
 import styles from '@/styles/Home.module.css'
-function Counter(){
-  return <p>
-    0 <input type="button" value="+"/>
-  </p>
-}
+import { Counter } from '../components/Counter'
 export default function Home() {
   return (
     <>
