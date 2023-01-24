@@ -14,8 +14,16 @@ export default function Home() {
   return (
     <>
       <h1>Counter</h1>
-      {count} <CounterDummy value={count} onChangeValue={(newCount)=>{
-        setCount(newCount);
+      {count} <CounterDummy value={count} onChangeValue={async (newCount)=>{
+        const response = await fetch('/api/count', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify({value:newCount})
+        });
+        const result = await response.json();
+        setCount(result.value);
       }}></CounterDummy>
     </>
   )
