@@ -7,6 +7,7 @@ export const slice = createSlice({
   initialState,
   reducers: {
     up: (state, action) => {
+      state.value = state.value + action.payload;
     },
     down: (state, action) => {
     }
