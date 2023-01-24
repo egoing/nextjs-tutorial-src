@@ -2,15 +2,20 @@ import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import { Counter } from '../components/Counter'
 import { CounterDummy } from '../components/CounterDummy'
-export default function Home() {
-  const [count, setCount] = useState(10);
-  useEffect(()=>{
-    fetch('/api/count')
-      .then(res=>res.json())
-      .then(result=>{
-        setCount(result.value);
-      })
-  },[])
+export async function getServerSideProps() {
+  if(process.env.HOST_URL===undefined) {
+    throw new Error('HOST_URL is not defined. .env.local is not loaded.');
+  }
+  const resp = await fetch(process.env.HOST_URL+'api/count');
+  const result = await resp.json();
+  return {
+    props:{
+      count:result.value
+    }
+  }
+}
+export default function Home(props) {
+  const [count, setCount] = useState(props.count);
   return (
     <>
       <h1>Counter</h1>
