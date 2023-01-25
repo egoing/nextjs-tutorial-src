@@ -5,7 +5,16 @@ export const countApi = createApi({
   endpoints: (builder) => ({
     getCount:builder.query({
       query: () => 'api/count'
+    }),
+    setCount:builder.mutation({
+      query: (value)=>{
+        return {
+          url:'api/count',
+          method:'PATCH',
+          body:{value}
+        }
+      }
     })
   })
 });
-export const {useGetCountQuery} = countApi;
+export const {useGetCountQuery, useSetCountMutation} = countApi;
